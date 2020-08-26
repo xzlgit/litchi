@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="litchi-api-server" />
+        <module name="litchi-core" />
+        <module name="litchi-customer-server" />
+        <module name="litchi-data-server" />
+        <module name="litchi-model" />
+        <module name="litchi-monitor-server" />
+        <module name="litchi-order-server" />
+        <module name="litchi-product-server" />
+        <module name="litchi-rpc" />
+        <module name="litchi-source-server" />
+        <module name="litchi-upload-server" />
+      </profile>
+    </annotationProcessing>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="litchi-api-server" options="-parameters" />
+      <module name="litchi-core" options="-parameters" />
+      <module name="litchi-customer-server" options="-parameters" />
+      <module name="litchi-data-server" options="-parameters" />
+      <module name="litchi-model" options="-parameters" />
+      <module name="litchi-monitor-server" options="-parameters" />
+      <module name="litchi-order-server" options="-parameters" />
+      <module name="litchi-product-server" options="-parameters" />
+      <module name="litchi-rpc" options="-parameters" />
+      <module name="litchi-source-server" options="-parameters" />
+      <module name="litchi-upload-server" options="-parameters" />
+    </option>
+  </component>
+</project>

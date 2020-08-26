@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding" addBOMForNewFiles="with NO BOM">
+    <file url="file://$PROJECT_DIR$" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/litchi-api-server" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/litchi-core" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/litchi-customer-server" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/litchi-data-server" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/litchi-model" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/litchi-monitor-server" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/litchi-order-server" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/litchi-product-server" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/litchi-rpc" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/litchi-source-server" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/litchi-upload-server" charset="UTF-8" />
+  </component>
+</project>

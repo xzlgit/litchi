@@ -1,0 +1,75 @@
+server:
+  tomcat:
+    uri-encoding: UTF-8
+  port: 8086
+
+spring:
+  application:
+    name: litchi-order-server
+  cloud:
+    consul:
+      host: 120.78.227.159
+      port: 8500
+      #consul配置
+      discovery:
+        healthCheckPath: /health
+        instance-id: ${spring.application.name}:${server.port}
+        healthCheckInterval: 15s
+        serviceName: ${spring.application.name}
+        prefer-ip-address: true
+  datasource:
+    name: springboot
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      filter: stat
+      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:mysql://127.0.0.1:3306/litchi?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&useTimezone=true&serverTimezone=GMT
+      username: root
+      password: cjladmin
+      initial-size: 1
+      min-idle: 1
+      max-active: 20
+      max-wait: 60000
+      time-between-eviction-runs-millis: 60000
+  http:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 1000MB
+  resources:
+    static-locations: file:/app/data/litchi/order-server/resources,classpath:/static,classpath:/public,classpath:/resources
+
+  redis:
+    database: 0
+    host: 127.0.0.1
+    password:
+    port: 6379
+    timeout: 3s
+    lettuce:
+      pool:
+        max-active: 8
+        max-idle: 8
+        max-wait: 1
+        min-idle: 0
+    redisson:
+      pool-size: 64
+
+mybatis-plus:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: cn.litchi.model.model
+
+redisson:
+  cache:
+    config: classpath:/redisson-cache.yml
+
+logging:
+  level:
+    root: INFO
+  file: litchi-order-server.log
+
+cartKey: LITCHI_MALL_CART
+

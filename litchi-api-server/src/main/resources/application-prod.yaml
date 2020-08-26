@@ -1,0 +1,81 @@
+
+server:
+  tomcat:
+    uri-encoding: UTF-8
+  port: 8081
+
+spring:
+  application:
+    name: litchi-api-server
+  cloud:
+    consul:
+      host: 127.0.0.1
+      port: 8500
+      #consul配置
+      discovery:
+        healthCheckPath: /health
+        instance-id: ${spring.application.name}:${server.port}
+        healthCheckInterval: 15s
+        serviceName: ${spring.application.name}
+        prefer-ip-address: true
+        register: false
+  datasource:
+    name: springboot
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      filter: stat
+      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:mysql://127.0.0.1:3306/litchi?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&serverTimezone=GMT%2B8
+      username: root
+      password: cjladmin
+      initial-size: 1
+      min-idle: 1
+      max-active: 20
+      max-wait: 60000
+      time-between-eviction-runs-millis: 60000
+  http:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 1000MB
+  resources:
+    static-locations: file:/app/data/litchi/api-server/resources,classpath:/static,classpath:/public,classpath:/resources
+
+mybatis-plus:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: cn.litchi.model.model
+
+redis:
+  host: 127.0.0.1
+  port: 6379
+  pool:
+    max-active: 100
+    max-idle: 10
+    max-wait: 100000
+  timeout: 0
+
+logging:
+  level:
+    root: INFO
+  file: litchi-api-server.log
+
+jwt:
+  # 请求头部数据属性名: 值 token
+  header: Authorization
+  # 用户自定义的口令
+  secret: mySecret
+  # 令牌失效实际时间: 7天
+  expiration: 604800
+  # 承载字符串
+  tokenHead: Bearer
+  route:
+    authentication:
+      # 签发令牌的路径
+      path: /auth
+      # 令牌刷新的路径
+      refresh: /refresh
+

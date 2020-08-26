@@ -1,0 +1,5 @@
+litchi:data:user-get-user-by-name:
+  ttl: 60000
+  maxIdleTime: 60000
+
+
