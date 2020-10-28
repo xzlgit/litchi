@@ -148,6 +148,7 @@ CREATE TABLE `lz_litchi_type`  (
 -- Records of lz_litchi_type
 -- ----------------------------
 
+--原表中缺少name字段 后补上20201010
 -- ----------------------------
 -- Table structure for lz_monitor_regulation_group
 -- ----------------------------
@@ -155,6 +156,7 @@ DROP TABLE IF EXISTS `lz_monitor_regulation_group`;
 CREATE TABLE `lz_monitor_regulation_group`  (
   `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '主键',
   `orchard_id` bigint(20) NULL DEFAULT NULL COMMENT '果园id',
+  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '名称',
   `enable` tinyint(1) NULL DEFAULT NULL COMMENT '规则状态',
   `message` varchar(1024) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '建议',
   `begin_day` int(11) NULL DEFAULT NULL COMMENT '规则生效时间范围起点，一年中的第几天',
@@ -168,6 +170,7 @@ CREATE TABLE `lz_monitor_regulation_group`  (
 -- Records of lz_monitor_regulation_group
 -- ----------------------------
 
+--原表中缺少name字段 后补上20201009  index 字段名称错误应为 index_num
 -- ----------------------------
 -- Table structure for lz_monitor_regulation_item
 -- ----------------------------
@@ -175,7 +178,8 @@ DROP TABLE IF EXISTS `lz_monitor_regulation_item`;
 CREATE TABLE `lz_monitor_regulation_item`  (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `group_id` bigint(20) NULL DEFAULT NULL COMMENT '所属规则组id',
-  `index` int(10) NULL DEFAULT NULL COMMENT '序号',
+  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '名称',
+  `index_num` int(10) NULL DEFAULT NULL COMMENT '序号',
   `threshold_type` int(5) NULL DEFAULT NULL COMMENT '阈值类型：1，平均值 ；2，最小值；3，最大值',
   `data_type` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '影响因素，水分，温度等',
   `operator` varchar(5) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '操作符[\">\",\"<\",\"=\"]，表示 大于，小于，等于 阈值的情况。',
@@ -425,6 +429,7 @@ CREATE TABLE `sys_role`  (
 -- Records of sys_role
 -- ----------------------------
 INSERT INTO `sys_role` VALUES (1, 'ROLE_user');
+INSERT INTO `sys_role` VALUES (2, 'ROLE_admin');
 
 -- ----------------------------
 -- Table structure for sys_user
@@ -568,7 +573,7 @@ CREATE TABLE `tb_franchiser`  (
 -- ----------------------------
 -- Records of tb_franchiser
 -- ----------------------------
-
+--update_time 字段有改动 默认设置为空  否则建表失败
 -- ----------------------------
 -- Table structure for tb_item
 -- ----------------------------
@@ -584,7 +589,7 @@ CREATE TABLE `tb_item`  (
   `cid` bigint(20) NOT NULL COMMENT '所属类目，叶子类目',
   `status` tinyint(4) NOT NULL DEFAULT 1 COMMENT '商品状态，1-正常，2-下架，3-删除',
   `create_time` timestamp(0) NOT NULL COMMENT '创建时间',
-  `update_time` timestamp(0) NOT NULL COMMENT '更新时间',
+  `update_time` timestamp(0) NULL DEFAULT NULL COMMENT '更新时间',
   `vendor_id` bigint(20) NULL DEFAULT NULL COMMENT '所属卖家id',
   `area` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '地区',
   `promote` tinyint(4) NULL DEFAULT NULL COMMENT '同城推广，1-同城推广，2-不同城推广',
